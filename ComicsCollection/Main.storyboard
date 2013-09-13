@@ -1,20 +1,84 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="JZU-Q6-Vo4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="dgF-0Z-JG1">
     <dependencies>
-        <deployment defaultVersion="1552" identifier="iOS"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
-        <!--View Controller - Item 1-->
+        <!--Entry View Controller - Item 1-->
         <scene sceneID="gA0-4m-S75">
             <objects>
-                <viewController id="lOX-mt-svK" sceneMemberID="viewController">
+                <viewController id="lOX-mt-svK" customClass="BCEntryViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FSf-rB-0vg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Search" borderStyle="roundedRect" placeholder="Resource" minimumFontSize="17" id="mHY-ud-xLH">
+                                <rect key="frame" x="20" y="23" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="spawn" borderStyle="roundedRect" placeholder="Search Term" minimumFontSize="17" id="5hU-HB-aEm">
+                                <rect key="frame" x="20" y="54" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rfy-AQ-wko">
+                                <rect key="frame" x="251" y="92" width="49" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="submitButtonTapped:" destination="lOX-mt-svK" eventType="touchUpInside" id="0IM-Ab-tLN"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="1Q5-Xa-eM1">
+                                <rect key="frame" x="0.0" y="121" width="320" height="393"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ComicSearchCell" textLabel="Y4P-Uq-XkW" detailTextLabel="bim-df-4kd" style="IBUITableViewCellStyleSubtitle" id="767-xM-rbe">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="767-xM-rbe" id="VZu-TI-AcE">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Y4P-Uq-XkW">
+                                                    <rect key="frame" x="15" y="3" width="34" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bim-df-4kd">
+                                                    <rect key="frame" x="15" y="25" width="43" height="15"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="lOX-mt-svK" id="gNM-cr-I7u"/>
+                                    <outlet property="delegate" destination="lOX-mt-svK" id="mmo-KB-i5H"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="9zu-pZ-6ch"/>
+                    <connections>
+                        <outlet property="resourceTextField" destination="mHY-ud-xLH" id="aCC-6j-amS"/>
+                        <outlet property="searchTextField" destination="5hU-HB-aEm" id="3QJ-m6-LRV"/>
+                        <outlet property="tableView" destination="1Q5-Xa-eM1" id="rWA-DI-Dgf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NXZ-Rf-kaH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -24,7 +88,7 @@
         <scene sceneID="sw4-u2-aFg">
             <objects>
                 <tabBarController definesPresentationContext="YES" id="dgF-0Z-JG1" sceneMemberID="viewController">
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="r6l-Ax-Kwe">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -32,7 +96,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="lOX-mt-svK" kind="relationship" relationship="viewControllers" id="s9T-a9-PGB"/>
-                        <segue destination="JZU-Q6-Vo4" kind="relationship" relationship="viewControllers" id="S9k-Yw-XTv"/>
+                        <segue destination="JZU-Q6-Vo4" kind="relationship" relationship="viewControllers" id="XZr-AD-WuH"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="48I-nF-f2y" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -87,6 +151,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="Gvs-4q-at7"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="bfG-ii-3bg" id="WjP-h0-iSC"/>
                         <outlet property="view" destination="1tY-Xg-JyA" id="ubS-5m-UMF"/>

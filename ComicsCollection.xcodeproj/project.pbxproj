@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05138F5217E1613F00BCDFB1 /* BCEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05138F5117E1613F00BCDFB1 /* BCEntryViewController.m */; };
 		05A0D75F17875B9000B75961 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05A0D75E17875B9000B75961 /* Main.storyboard */; };
 		05A0D76117875BF400B75961 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 05A0D76017875BF400B75961 /* Default-568h@2x.png */; };
 		05D499B217E15AEF00B64008 /* BCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D499AB17E15AEF00B64008 /* BCAppDelegate.m */; };
@@ -49,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05138F5017E1613F00BCDFB1 /* BCEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCEntryViewController.h; sourceTree = "<group>"; };
+		05138F5117E1613F00BCDFB1 /* BCEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCEntryViewController.m; sourceTree = "<group>"; };
 		05A0D75E17875B9000B75961 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		05A0D76017875BF400B75961 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		05D499AA17E15AEF00B64008 /* BCAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCAppDelegate.h; sourceTree = "<group>"; };
@@ -144,6 +147,8 @@
 				05D499AD17E15AEF00B64008 /* BCComicCell.m */,
 				05D499B017E15AEF00B64008 /* BCComicVineViewController.h */,
 				05D499B117E15AEF00B64008 /* BCComicVineViewController.m */,
+				05138F5017E1613F00BCDFB1 /* BCEntryViewController.h */,
+				05138F5117E1613F00BCDFB1 /* BCEntryViewController.m */,
 			);
 			path = "Demo View Controllers";
 			sourceTree = "<group>";
@@ -358,6 +363,7 @@
 				05E1AD501777C2F40052484D /* AFImageRequestOperation.m in Sources */,
 				05E1AD4F1777C2F40052484D /* AFHTTPRequestOperation.m in Sources */,
 				05E1AD4E1777C2F40052484D /* AFHTTPClient.m in Sources */,
+				05138F5217E1613F00BCDFB1 /* BCEntryViewController.m in Sources */,
 				05E1AD551777C2F40052484D /* AFXMLRequestOperation.m in Sources */,
 				05E1AD0F17774E290052484D /* main.m in Sources */,
 				05E1AD511777C2F40052484D /* AFJSONRequestOperation.m in Sources */,
@@ -484,7 +490,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ComicsCollection/ComicsCollection-Prefix.pch";
 				INFOPLIST_FILE = "ComicsCollection/ComicsCollection-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -499,7 +505,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ComicsCollection/ComicsCollection-Prefix.pch";
 				INFOPLIST_FILE = "ComicsCollection/ComicsCollection-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

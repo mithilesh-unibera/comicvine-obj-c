@@ -12,4 +12,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property (nonatomic, copy) NSString *resource;
+@property (nonatomic, copy) NSString *term;
+
 @end

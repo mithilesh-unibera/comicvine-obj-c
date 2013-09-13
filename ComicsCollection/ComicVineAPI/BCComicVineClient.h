@@ -8,6 +8,8 @@
 
 #import "AFHTTPClient.h"
 
+typedef void(^ComicVineCompletionHandler)(NSURLRequest *request, NSHTTPURLResponse *response, id JSON, NSError *error);
+
 @interface BCComicVineClient : AFHTTPClient
 
 extern NSString * const kComicVineBaseURL;
@@ -18,11 +20,16 @@ extern NSString * const kComicVineBaseURL;
 - (void)searchWithQuery:(NSString *)query
                   limit:(NSUInteger)limit
                  offset:(NSUInteger)offset
-      completionHandler:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, id JSON, NSError *error))completionHandler;
+      completionHandler:(ComicVineCompletionHandler)completionHandler;
 
-- (void)issuesWithName:(NSString *)name
-                 limit:(NSUInteger)limit
-                offset:(NSUInteger)offset
-     completionHandler:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, id JSON, NSError *error))completionHandler;
+- (void)volumeForID:(NSString *)volumeID
+              limit:(NSUInteger)limit
+             offset:(NSUInteger)offset
+        completionHandler:(ComicVineCompletionHandler)completionHandler;
+
+- (void)issueForID:(NSString *)issueID
+              limit:(NSUInteger)limit
+             offset:(NSUInteger)offset
+      completionHandler:(ComicVineCompletionHandler)completionHandler;
 
 @end

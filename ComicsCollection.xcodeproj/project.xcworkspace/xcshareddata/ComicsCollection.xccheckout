@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>37013561-3FDA-4FA9-83C9-5C3FEB960C73</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ComicsCollection</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>2E69D6CA-1CF2-44EA-BA13-C4CD6D04467F</key>
+		<string>https://github.com/bclark/comicvine-obj-c.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ComicsCollection.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>2E69D6CA-1CF2-44EA-BA13-C4CD6D04467F</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/bclark/comicvine-obj-c.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>2E69D6CA-1CF2-44EA-BA13-C4CD6D04467F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2E69D6CA-1CF2-44EA-BA13-C4CD6D04467F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>comicvine-obj-c</string>
+		</dict>
+	</array>
+</dict>
+</plist>

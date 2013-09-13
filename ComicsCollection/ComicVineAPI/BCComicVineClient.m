@@ -40,7 +40,14 @@ NSString * const kComicVineBaseURL = @"http://www.comicvine.com/api";
 - (NSURL *)urlForResource:(NSString *)resource andParameters:(NSDictionary *)params
 {
     NSURL *url = nil;
-    NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/%@/?api_key=%@&format=%@",kComicVineBaseURL,resource,COMIC_VINE_API_KEY,COMIC_VINE_RESPONSE_FORMAT];
+    NSString *idString = params[@"id"];
+    
+    NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/%@",kComicVineBaseURL,resource];
+    if (idString) {
+        [urlString appendFormat:@"/%@",idString];
+    }
+    [urlString appendFormat:@"/?api_key=%@&format=%@",COMIC_VINE_API_KEY,COMIC_VINE_RESPONSE_FORMAT];
+
     for (NSString *paramName in [params allKeys]) {
         NSString *paramValueString = nil;
         id paramValue = params[paramName];
@@ -84,20 +91,38 @@ NSString * const kComicVineBaseURL = @"http://www.comicvine.com/api";
     [self requestWithURL:url andCompletionHandler:completionHandler];
 }
 
-- (void)issuesWithName:(NSString *)name
-                 limit:(NSUInteger)limit
-                offset:(NSUInteger)offset
-     completionHandler:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, id JSON, NSError *error))completionHandler;
+
+- (void)volumeForID:(NSString *)volumeID
+              limit:(NSUInteger)limit
+             offset:(NSUInteger)offset
+  completionHandler:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, id JSON, NSError *error))completionHandler
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"query"] = name;
+    params[@"id"] = volumeID;
     if (limit > 0) {
         params[@"limit"] = [NSNumber numberWithInteger:limit];
     }
     if (offset > 0) {
         params[@"offset"] = [NSNumber numberWithInteger:offset];
     }
-    NSURL *url = [self urlForResource:@"issues" andParameters:params];
+    NSURL *url = [self urlForResource:@"volume" andParameters:params];
+    [self requestWithURL:url andCompletionHandler:completionHandler];
+}
+
+- (void)issueForID:(NSString *)issueID
+             limit:(NSUInteger)limit
+            offset:(NSUInteger)offset
+ completionHandler:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, id JSON, NSError *error))completionHandler
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"id"] = issueID;
+    if (limit > 0) {
+        params[@"limit"] = [NSNumber numberWithInteger:limit];
+    }
+    if (offset > 0) {
+        params[@"offset"] = [NSNumber numberWithInteger:offset];
+    }
+    NSURL *url = [self urlForResource:@"issue" andParameters:params];
     [self requestWithURL:url andCompletionHandler:completionHandler];
 }
 @end

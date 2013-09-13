@@ -11,10 +11,13 @@
 #import "UIImageView+AFNetworking.h"
 #import "BCComicCell.h"
 #import <QuartzCore/QuartzCore.h>
+#import "BCAppDelegate.h"
 
 @interface BCComicVineViewController ()
 
+@property (nonatomic, strong) BCComicVineClient *comicVine;
 @property (nonatomic, strong) NSMutableArray *images;
+@property (nonatomic, strong) NSString *searchTerm;
 
 @end
 
@@ -23,34 +26,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSArray *characters = @[@"daredevil"];//@[@"deadpool",@"punisher",@"spider-man",@"wolverine",@"starlord",@"catwoman"];
-    self.images = [NSMutableArray array];
+    self.comicVine = [BCComicVineClient sharedComicVineClient];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     
-    BCComicVineClient *comicVine = [BCComicVineClient sharedComicVineClient];
-    for (NSString *character in characters) {
-//        [comicVine searchWithQuery:character
-//                             limit:30
-//                            offset:0
-//                 completionHandler:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON, NSError *error) {
-//                     NSArray *results = JSON[@"results"];
-//                     for (int i = 0; i < [results count]; i++) {
-//                         NSString *imageURL = results[i][@"image"][@"small_url"];
-//                         [self.images addObject:imageURL];
-//                     }        
-//                     [self.collectionView reloadData];
-//                 }];
-        
-        [comicVine issuesWithName:character
-                            limit:30
-                           offset:0
-                completionHandler:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON, NSError *error) {
-                    NSArray *results = JSON[@"results"];
-                    for (int i = 0; i < [results count]; i++) {
-                        NSString *imageURL = results[i][@"image"][@"small_url"];
-                        [self.images addObject:imageURL];
-                    }
-                    [self.collectionView reloadData];
-                }];
+    BCAppDelegate *appDelegate = (BCAppDelegate *)[[UIApplication sharedApplication] delegate];
+    if (!appDelegate.term) {
+        self.searchTerm = @"batman";
+    }
+    if (![appDelegate.term isEqualToString:self.searchTerm]) {
+        self.images = [NSMutableArray array];
+        [self.comicVine searchWithQuery:self.searchTerm
+                                  limit:30
+                                 offset:0
+                      completionHandler:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON, NSError *error) {
+                          NSArray *results = JSON[@"results"];
+                          for (int i = 0; i < [results count]; i++) {
+                              NSString *imageURL = results[i][@"image"][@"small_url"];
+                              [self.images addObject:imageURL];
+                          }
+                          [self.collectionView reloadData];
+                      }];
     }
 }
 
@@ -106,24 +105,24 @@
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSInteger index = (3 * indexPath.section) + indexPath.row;
-//    NSLog(@"you touched index %d",index);
-    BCComicCell *cell = (BCComicCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    UIImage *image = cell.imageView.image;
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-    imageView.image = image;
-    imageView.userInteractionEnabled = YES;
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(largeImageTapped:)];
-    [imageView addGestureRecognizer:tap];
-    [UIView animateWithDuration:0.3
-                          delay:0.0
-         usingSpringWithDamping:0.5
-          initialSpringVelocity:0.1
-                        options:UIViewAnimationOptionCurveEaseInOut
-                     animations:^{
-        [self.view addSubview:imageView];
-    }
-                     completion:nil];
+    NSInteger index = (3 * indexPath.section) + indexPath.row;
+
+//    BCComicCell *cell = (BCComicCell *)[collectionView cellForItemAtIndexPath:indexPath];
+//    UIImage *image = cell.imageView.image;
+//    UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+//    imageView.image = image;
+//    imageView.userInteractionEnabled = YES;
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(largeImageTapped:)];
+//    [imageView addGestureRecognizer:tap];
+//    [UIView animateWithDuration:0.3
+//                          delay:0.0
+//         usingSpringWithDamping:0.5
+//          initialSpringVelocity:0.1
+//                        options:UIViewAnimationOptionCurveEaseInOut
+//                     animations:^{
+//                         [self.view addSubview:imageView];
+//                     }
+//                     completion:nil];
 }
 
 - (void)largeImageTapped:(UITapGestureRecognizer *)tap
